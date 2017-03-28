@@ -1,6 +1,6 @@
 {% set name = "conda-mirror" %}
-{% set version = "0.6.5" %}
-{% set sha256 = "b609751148ffb5a1d36011d558673cb5eedf71327def05ea667c536004c1b0ca" %}
+{% set version = "0.6.6" %}
+{% set sha256 = "6e148810fc17c56ae5200c1c04b9fb01c839f5724c03f88316b7301a0990e4fc" %}
 
 {% set url_name = name.replace("-", "_") %}
 
@@ -15,6 +15,7 @@ source:
 
 build:
   number: 0
+  skip: True  # [py2k]
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - conda-mirror = conda_mirror.conda_mirror:cli
@@ -40,11 +41,7 @@ about:
   home: https://github.com/maxpoint/conda-mirror
   license: BSD 3-Clause
   license_family: BSD
-  # Can be uncommented on the next release.
-  #
-  # https://github.com/maxpoint/conda-mirror/issues/36
-  #
-  # license_file: LICENSE
+  license_file: LICENSE
   summary: 'mirror an upstream conda channel to a local directory'
 
 extra:
