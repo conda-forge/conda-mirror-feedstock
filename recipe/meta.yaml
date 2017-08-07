@@ -1,6 +1,6 @@
 {% set name = "conda-mirror" %}
-{% set version = "0.7.2" %}
-{% set sha256 = '6b1c6ce8c96cce1579b8d7f6140b58be4fa66c8fbff7236e2e90b40d201ad6a7' %}
+{% set version = "0.7.3" %}
+{% set sha256 = '7fbe71be9682196c104341789c74521c309e514fa2379e8f43349de083776de0' %}
 
 {% set url_name = name.replace("-", "_") %}
 
