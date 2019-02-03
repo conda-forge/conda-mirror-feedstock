@@ -1,6 +1,6 @@
 {% set name = "conda-mirror" %}
-{% set version = "0.7.4" %}
-{% set sha256 = '4e6265c94258553b1093337d4f6b00bcfb4540742c36e87ad16d3674802a64ea' %}
+{% set version = "0.8.0" %}
+{% set sha256 = "1160283340dfb6c884d5116706e76e0f404c63086f94c2d9b7aaec30b79a2118" %}
 
 {% set url_name = name.replace("-", "_") %}
 
@@ -14,7 +14,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 0
   skip: True  # [py2k]
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
