@@ -14,19 +14,19 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  skip: True  # [py2k]
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 1
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
     - conda-mirror = conda_mirror.conda_mirror:cli
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3
+    - pip
     - setuptools
-
   run:
-    - python
+    - python >=3
     - requests
     - pyyaml
 
@@ -38,7 +38,7 @@ test:
     - conda-mirror --help
 
 about:
-  home: https://github.com/maxpoint/conda-mirror
+  home: https://github.com/regro/conda-mirror
   license: BSD 3-Clause
   license_family: BSD
   license_file: LICENSE
