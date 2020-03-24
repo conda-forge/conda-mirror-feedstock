@@ -1,6 +1,5 @@
 {% set name = "conda-mirror" %}
-{% set version = "0.8.1" %}
-{% set sha256 = "d68b0b511bad39eab1e4b7df894f2af07e0514d7bfe471acab6e0568e4619cda" %}
+{% set version = "0.8.2" %}
 
 {% set url_name = name.replace("-", "_") %}
 
@@ -11,7 +10,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ url_name[0] }}/{{ url_name }}/{{ url_name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 80d09cfa2481574d2420bd4ed4913b926c4a2dd65ba8ac41cf98555ee695d92c
 
 build:
   number: 1
@@ -39,7 +38,7 @@ test:
 
 about:
   home: https://github.com/regro/conda-mirror
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
   summary: 'mirror an upstream conda channel to a local directory'
