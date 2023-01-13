@@ -1,5 +1,5 @@
 {% set name = "conda-mirror" %}
-{% set version = "0.8.2" %}
+{% set version = "0.9.0" %}
 
 {% set url_name = name.replace("-", "_") %}
 
@@ -8,16 +8,16 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ url_name[0] }}/{{ url_name }}/{{ url_name }}-{{ version }}.tar.gz
-  sha256: 80d09cfa2481574d2420bd4ed4913b926c4a2dd65ba8ac41cf98555ee695d92c
+  sha256: 32500b6ecabd22beffb4a62f208da261afc39b431c88f265adbd06f1805a32d3
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
     - conda-mirror = conda_mirror.conda_mirror:cli
+    - conda-diff-tar = conda_mirror.diff_tar:main
 
 requirements:
   host:
@@ -28,6 +28,7 @@ requirements:
     - python >=3
     - requests
     - pyyaml
+    - tqdm
 
 test:
   imports:
@@ -35,9 +36,10 @@ test:
 
   commands:
     - conda-mirror --help
+    - conda-diff-tar --help
 
 about:
-  home: https://github.com/regro/conda-mirror
+  home: https://github.com/conda-incubator/conda-mirror
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
