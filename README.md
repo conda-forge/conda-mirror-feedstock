@@ -1,11 +1,11 @@
-About conda-mirror
-==================
+About conda-mirror-feedstock
+============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-mirror-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/conda-incubator/conda-mirror
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-mirror-feedstock/blob/main/LICENSE.txt)
 
 Summary: mirror an upstream conda channel to a local directory
 
