@@ -1,5 +1,5 @@
 {% set name = "conda-mirror" %}
-{% set version = "0.9.0" %}
+{% set version = "0.10.0" %}
 
 {% set url_name = name.replace("-", "_") %}
 
@@ -9,12 +9,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ url_name[0] }}/{{ url_name }}/{{ url_name }}-{{ version }}.tar.gz
-  sha256: 32500b6ecabd22beffb4a62f208da261afc39b431c88f265adbd06f1805a32d3
+  sha256: 99c7cfa912cff190c5051c7c2100740dbf8c74614f8f9e8431d4d5b01816100f
 
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - conda-mirror = conda_mirror.conda_mirror:cli
     - conda-diff-tar = conda_mirror.diff_tar:main
@@ -43,7 +43,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'mirror an upstream conda channel to a local directory'
+  summary: mirror an upstream conda channel to a local directory
 
 extra:
   recipe-maintainers:
@@ -51,4 +51,3 @@ extra:
     - parente
     - scopatz
     - xhochy
-    
