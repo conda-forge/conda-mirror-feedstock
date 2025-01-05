@@ -8,11 +8,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ url_name[0] }}/{{ url_name }}/{{ url_name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ url_name[0] }}/{{ url_name }}/{{ url_name }}-{{ version }}.tar.gz
   sha256: 99c7cfa912cff190c5051c7c2100740dbf8c74614f8f9e8431d4d5b01816100f
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
@@ -21,16 +21,18 @@ build:
 
 requirements:
   host:
-    - python >=3
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3
+    - python >={{ python_min }}
     - requests
     - pyyaml
     - tqdm
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - conda_mirror
 
