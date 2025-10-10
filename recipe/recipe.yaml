@@ -1,6 +1,6 @@
 context:
   name: conda-mirror
-  version: "0.11.2"
+  version: "0.11.3"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/conda-incubator/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 3f57fbe31156ccf007a28985578db7031e89724d70a63301feb174a2a4a7bae2
+  sha256: 625d33d7e0cb2fcf923784e24c72dd0e01cd70725bc5feaf1c55b32ca887a974
 
 build:
   number: 0
