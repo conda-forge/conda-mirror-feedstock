@@ -11,7 +11,7 @@ source:
   sha256: c75d3278aa057c1d3fe4b4d051ec6aa9f4efe8eb5d844c552d2b27d6e0defc9c
 
 build:
-  number: 0
+  number: 1
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
@@ -19,11 +19,11 @@ build:
     content:
       - if: win
         then:
-          - cargo install --no-track --locked --root %PREFIX% --path .
+          - cargo auditable install --no-track --locked --root %PREFIX% --path .
           - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
         else:
           - export "OPENSSL_DIR=$PREFIX"
-          - cargo install --no-track --locked --root $PREFIX --path .
+          - cargo auditable install --no-track --locked --root $PREFIX --path .
           - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 requirements:
@@ -33,12 +33,17 @@ requirements:
     - ${{ stdlib('c') }}
     - ${{ compiler('rust') }}
     - cargo-bundle-licenses
+    - cargo-auditable
   host:
     - openssl
 
 tests:
   - script:
       - conda-mirror --help
+  - package_contents:
+      bin:
+        - conda-mirror
+      strict: true
 
 about:
   homepage: https://github.com/conda-incubator/conda-mirror
