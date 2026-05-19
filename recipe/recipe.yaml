@@ -40,6 +40,10 @@ requirements:
 tests:
   - script:
       - conda-mirror --help
+  - package_contents:
+      bin:
+        - conda-mirror
+      strict: true
 
 about:
   homepage: https://github.com/conda-incubator/conda-mirror
