@@ -16,6 +16,12 @@ build:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
       CARGO_PROFILE_RELEASE_LTO: fat
+      # aws-lc-sys (pulled in via aws-config/rustls) needs clang-cl to assemble
+      # its ARM64 perlasm `.S` files on Windows; MSVC's cl.exe silently drops
+      # them, which results in a link error. Harmless no-op on other targets.
+      # https://aws.github.io/aws-lc-rs/requirements/windows.html
+      CC_aarch64_pc_windows_msvc: clang-cl
+      AR_aarch64_pc_windows_msvc: llvm-lib
     content:
       - if: win
         then:
@@ -34,6 +40,8 @@ requirements:
     - ${{ compiler('rust') }}
     - cargo-bundle-licenses
     - cargo-auditable
+    - if: win and arm64
+      then: clang # provides clang-cl, required by aws-lc-sys on win-arm64
   host:
     - openssl
 
