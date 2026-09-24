@@ -28,6 +28,10 @@ build:
           - cargo auditable install --no-track --locked --root %PREFIX% --path .
           - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
         else:
+          # rust-lld cannot handle the ppc64le relocations emitted for
+          # libdbus-sys, so link with GNU ld there instead
+          - if: target_platform == "linux-ppc64le"
+            then: export CARGO_BUILD_RUSTFLAGS="${CARGO_BUILD_RUSTFLAGS:-} -C link-arg=-fuse-ld=bfd"
           - export "OPENSSL_DIR=$PREFIX"
           - cargo auditable install --no-track --locked --root $PREFIX --path .
           - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
