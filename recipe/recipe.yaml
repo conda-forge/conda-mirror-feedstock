@@ -11,7 +11,7 @@ source:
   sha256: bae2688dd8a8b3bad8c72bdec59bb6bc9b149ad4ff0149aa3d83c32d511daf31
 
 build:
-  number: 0
+  number: 1
   script:
     env:
       CARGO_PROFILE_RELEASE_STRIP: symbols
@@ -38,7 +38,7 @@ build:
 
 requirements:
   build:
-    - pkg-config
+    - pkgconf
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - ${{ compiler('rust') }}
